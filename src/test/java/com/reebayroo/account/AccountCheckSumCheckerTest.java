@@ -1,4 +1,4 @@
-package com.reebayroo;
+package com.reebayroo.account;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -17,12 +17,14 @@ public class AccountCheckSumCheckerTest {
 
 	@Test
 	public void testValidCase() {
-		assertTrue(checker.eval(new int[] { 3, 4, 5, 8, 8, 2, 8, 6, 5 }));
+		int[] numbers = { 3, 4, 5, 8, 8, 2, 8, 6, 5 };
+		assertTrue(checker.eval(CheckerTestHelper.create(numbers)));
 	}
 
 	@Test
 	public void testInvalidCase() {
-		assertFalse(checker.eval(new int[] { 9, 4, 5, 8, 8, 2, 8, 3, 5 }));
+		int[] numbers = { 9, 4, 5, 8, 8, 2, 8, 3, 5 };
+		assertFalse(checker.eval(CheckerTestHelper.create(numbers)));
 	}
 
 	@Test
@@ -32,6 +34,7 @@ public class AccountCheckSumCheckerTest {
 
 	@Test
 	public void irregularArrayReturnsFalse() {
-		assertFalse(checker.eval(new int[] { 0, 3 }));
+		int[] numbers = { 0, 3 };
+		assertFalse(checker.eval(CheckerTestHelper.create(numbers)));
 	}
 }
