@@ -53,7 +53,7 @@ public class DecoratedFaxDigit {
 
 	@Override
 	public String toString() {
-		return "DecoratedFaxDigit [originalDigit=" + originalDigit + ", value=" + value + "]";
+		return String.valueOf(value);
 	}
 
 }

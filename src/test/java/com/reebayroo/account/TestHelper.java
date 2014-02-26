@@ -13,11 +13,11 @@ public class TestHelper {
 			"   ",//
 			"   ",//
 			"  |");
-	public static List<DecoratedFaxDigit> create(int... numbers) {
+	public static List<DecoratedFaxDigit> createDigits(int... numbers) {
 		List<DecoratedFaxDigit> result = new ArrayList<DecoratedFaxDigit>();
 		for (int value : numbers) {
 			DecoratedFaxDigit item = new DecoratedFaxDigit(
-					(value > 0 ?
+					(value > -1 ?
 					FaxDigitDictionary.getInstance().getByValue(value) : //
 					INVALID_FAX_DIGIT)
 					, value);
@@ -26,4 +26,13 @@ public class TestHelper {
 		return result;
 	}
 
+	public static AccountNumber createErr(int... numbers){
+		return new AccountNumber(createDigits(numbers), AccountNumberStatus.ERR);
+	}
+	public static AccountNumber createIll(int... numbers){
+		return new AccountNumber(createDigits(numbers), AccountNumberStatus.ILL);
+	}
+	public static AccountNumber createOK(int... numbers){
+		return new AccountNumber(createDigits(numbers), AccountNumberStatus.OK);
+	}
 }

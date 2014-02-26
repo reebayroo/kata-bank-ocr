@@ -18,13 +18,13 @@ public class AccountCheckSumCheckerTest {
 	@Test
 	public void testValidCase() {
 		int[] numbers = { 3, 4, 5, 8, 8, 2, 8, 6, 5 };
-		assertTrue(checker.eval(TestHelper.create(numbers)));
+		assertTrue(checker.eval(TestHelper.createDigits(numbers)));
 	}
 
 	@Test
 	public void testInvalidCase() {
 		int[] numbers = { 9, 4, 5, 8, 8, 2, 8, 3, 5 };
-		assertFalse(checker.eval(TestHelper.create(numbers)));
+		assertFalse(checker.eval(TestHelper.createDigits(numbers)));
 	}
 
 	@Test
@@ -35,6 +35,13 @@ public class AccountCheckSumCheckerTest {
 	@Test
 	public void irregularArrayReturnsFalse() {
 		int[] numbers = { 0, 3 };
-		assertFalse(checker.eval(TestHelper.create(numbers)));
+		assertFalse(checker.eval(TestHelper.createDigits(numbers)));
+	}
+
+	@Test
+	public void testAdditionalNumbers() {
+		assertTrue(checker.eval(TestHelper.createDigits(4, 9, 0, 0, 6, 7, 1, 1, 5)));
+		assertTrue(checker.eval(TestHelper.createDigits(4, 9, 0, 0, 6, 7, 7, 1, 9)));
+		assertTrue(checker.eval(TestHelper.createDigits(4, 9, 0, 8, 6, 7, 7, 1, 5)));
 	}
 }

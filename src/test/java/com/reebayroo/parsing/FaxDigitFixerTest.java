@@ -28,31 +28,31 @@ public class FaxDigitFixerTest {
 
 	@Test
 	public void testForSeven() {
-		List<DecoratedFaxDigit> options = fixer.findOptions(TestHelper.create(7).get(0));
-		assertEquals(options, TestHelper.create(1));
+		List<DecoratedFaxDigit> options = fixer.findOptions(TestHelper.createDigits(7).get(0));
+		assertEquals(options, TestHelper.createDigits(1));
 		
 	}
 	@Test
 	public void testForOne() {
-		List<DecoratedFaxDigit> options = fixer.findOptions(TestHelper.create(1).get(0));
-		assertEquals(options, TestHelper.create(7));
+		List<DecoratedFaxDigit> options = fixer.findOptions(TestHelper.createDigits(1).get(0));
+		assertEquals(options, TestHelper.createDigits(7));
 		
 	}
 	@Test
 	public void testForSix() {
-		List<DecoratedFaxDigit> options = fixer.findOptions(TestHelper.create(6).get(0));
-		assertEquals(options, TestHelper.create(8, 5));
+		List<DecoratedFaxDigit> options = fixer.findOptions(TestHelper.createDigits(6).get(0));
+		assertEquals(options, TestHelper.createDigits(8, 5));
 	}
 	@Test
 	public void testForIinvalid1() {
 		DecoratedFaxDigit invalid = new DecoratedFaxDigit(INVALID_1, -1);
 		List<DecoratedFaxDigit> options = fixer.findOptions(invalid );
-		assertEquals(options, TestHelper.create(1));
+		assertEquals(options, TestHelper.createDigits(1));
 	}
 	@Test
 	public void testForIinvalidA() {
 		DecoratedFaxDigit invalid = new DecoratedFaxDigit(INVALID_A, -1);
 		List<DecoratedFaxDigit> options = fixer.findOptions(invalid );
-		assertEquals(options, TestHelper.create(8));
+		assertEquals(options, TestHelper.createDigits(8));
 	}
 }
