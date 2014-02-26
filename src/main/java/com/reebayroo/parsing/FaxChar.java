@@ -2,7 +2,7 @@ package com.reebayroo.parsing;
 
 import org.apache.commons.lang3.Validate;
 
-class FaxChar {
+public class FaxChar {
 	private String lineOne;
 	private String lineTwo;
 	private String lineThree;

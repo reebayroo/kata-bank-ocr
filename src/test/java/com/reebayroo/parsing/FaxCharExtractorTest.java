@@ -20,17 +20,17 @@ public class FaxCharExtractorTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void validateThatFaxLineShouldHaveTwentySevenCharsOnLineOne() {
-		extractor.parse(replicate("-", 23), replicate("-", 27), replicate("-", 27));
+		extractor.parse(new FaxLine(replicate("-", 23), replicate("-", 27), replicate("-", 27)));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void validateThatFaxLineShouldHaveTwentySevenCharsOnLineThree() {
-		extractor.parse(replicate("-", 27), replicate("-", 27), replicate("-", 23));
+		extractor.parse(new FaxLine(replicate("-", 27), replicate("-", 27), replicate("-", 23)));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void validateThatFaxLineShouldHaveTwentySevenCharsOnLineTwo() {
-		extractor.parse(replicate("-", 27), replicate("-", 23), replicate("-", 27));
+		extractor.parse(new FaxLine(replicate("-", 27), replicate("-", 23), replicate("-", 27)));
 	}
 
 	private String replicate(String string, int j) {
@@ -41,7 +41,7 @@ public class FaxCharExtractorTest {
 	}
 
 	private void parseAndAssert(String lineOne, String lineTwo, String lineThree, int... expectedCodes) {
-		List<FaxChar> actual = extractor.parse(lineOne, lineTwo, lineThree);
+		List<FaxChar> actual = extractor.parse(new FaxLine(lineOne, lineTwo, lineThree));
 		List<FaxChar> expected = create(expectedCodes);
 		assertThat(actual, equalTo(expected));
 	}

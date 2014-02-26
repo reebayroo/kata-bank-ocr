@@ -14,6 +14,11 @@ public class AccountNumberFactory {
 		this.invalidNumberChecker = invalidNumberChecker;
 	}
 
+	public AccountNumberFactory() {
+		this.checkSumChecker = new AccountCheckSumChecker();
+		this.invalidNumberChecker = new AccountInvalidNumberChecker();
+	}
+
 	public AccountNumber createAccountNumber(List<TranslatedFaxChar> parsedChars) {
 		return new AccountNumber(parsedChars, calcStatus(parsedChars));
 	}

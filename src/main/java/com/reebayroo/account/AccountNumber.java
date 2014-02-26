@@ -33,15 +33,10 @@ public class AccountNumber {
 
 	@Override
     public boolean equals(Object obj) {
-	    if (this == obj) {
-		    return true;
-	    }
-	    if (obj == null) {
-		    return false;
-	    }
-	    if (!(obj instanceof AccountNumber)) {
-		    return false;
-	    }
+		//@formatter:off
+	    if (this == obj) { return true; }
+	    if (obj == null) { return false; }
+	    if (!(obj instanceof AccountNumber)) { return false; }
 	    AccountNumber other = (AccountNumber) obj;
 	    if (parsedFaxChars == null) {
 		    if (other.parsedFaxChars != null) {
@@ -56,9 +51,6 @@ public class AccountNumber {
 	    return true;
     }
 
-	@Override
-    public String toString() {
-	    return "AccountNumber [parsedFaxChars=" + parsedFaxChars + ", status=" + status + "]";
-    }
+	 
 
 }

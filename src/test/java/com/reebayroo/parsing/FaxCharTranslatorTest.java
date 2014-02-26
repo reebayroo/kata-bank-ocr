@@ -2,6 +2,7 @@ package com.reebayroo.parsing;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,8 +38,7 @@ public class FaxCharTranslatorTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void expectNotEmpty() {
-		List<FaxChar> empty = Arrays.asList();
-		this.translator.translate(empty);
+		this.translator.translate(new ArrayList<FaxChar>());
 	}
 
 }
