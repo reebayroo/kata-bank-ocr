@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 
-import com.reebayroo.parsing.TranslatedFaxChar;
+import com.reebayroo.parsing.DecoratedFaxDigit;
 
 public class AccountInvalidNumberChecker {
-	public boolean eval(List<TranslatedFaxChar> parsedFaxChars) {
+	public boolean eval(List<DecoratedFaxDigit> parsedFaxChars) {
 		if (CollectionUtils.isEmpty(parsedFaxChars)) {
 			return false;
 		}
 
-		List<TranslatedFaxChar> l = parsedFaxChars;
-		for (TranslatedFaxChar parsedFaxChar : l) {
+		List<DecoratedFaxDigit> l = parsedFaxChars;
+		for (DecoratedFaxDigit parsedFaxChar : l) {
 			if (parsedFaxChar.getValue() < 0) {
 				return false;
 			}

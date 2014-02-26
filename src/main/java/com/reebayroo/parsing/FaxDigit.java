@@ -1,13 +1,16 @@
 package com.reebayroo.parsing;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.apache.commons.lang3.Validate;
 
-public class FaxChar {
+public class FaxDigit {
 	private String lineOne;
 	private String lineTwo;
 	private String lineThree;
 
-	public FaxChar(String lineOne, String lineTwo, String lineThree) {
+	public FaxDigit(String lineOne, String lineTwo, String lineThree) {
 		Validate.notEmpty(lineOne);
 		Validate.notEmpty(lineTwo);
 		Validate.notEmpty(lineThree);
@@ -15,6 +18,10 @@ public class FaxChar {
 		this.lineOne = lineOne;
 		this.lineTwo = lineTwo;
 		this.lineThree = lineThree;
+	}
+	
+	public List<String> getLines(){
+		return Arrays.asList(lineOne, lineTwo, lineThree);
 	}
 
 	@Override
@@ -35,10 +42,10 @@ public class FaxChar {
         if (obj == null) {
 	        return false;
         }
-        if (!(obj instanceof FaxChar)) {
+        if (!(obj instanceof FaxDigit)) {
 	        return false;
         }
-        FaxChar other = (FaxChar) obj;
+        FaxDigit other = (FaxDigit) obj;
         if (lineOne == null) {
 	        if (other.lineOne != null) {
 		        return false;
@@ -65,7 +72,7 @@ public class FaxChar {
 
 	@Override
     public String toString() {
-	    return "FaxChar [\n." + lineOne + ".\n." + lineTwo + ".\n." + lineThree + ".\n.]";
+	    return "FaxDigit [\n." + lineOne + ".\n." + lineTwo + ".\n." + lineThree + ".\n.]";
     }
 	
 }

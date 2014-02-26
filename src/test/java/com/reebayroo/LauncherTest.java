@@ -16,29 +16,29 @@ import org.mockito.stubbing.Answer;
 import com.reebayroo.account.AccountNumber;
 import com.reebayroo.account.AccountNumberFactory;
 import com.reebayroo.account.AccountPrinter;
-import com.reebayroo.parsing.FaxChar;
-import com.reebayroo.parsing.FaxCharExtractor;
+import com.reebayroo.parsing.FaxDigit;
+import com.reebayroo.parsing.FaxDigitExtractor;
 import com.reebayroo.parsing.FaxLine;
 import com.reebayroo.parsing.FaxLineFactory;
-import com.reebayroo.parsing.FaxCharTranslator;
-import com.reebayroo.parsing.TranslatedFaxChar;
+import com.reebayroo.parsing.FaxDigitDecorator;
+import com.reebayroo.parsing.DecoratedFaxDigit;
 
 public class LauncherTest {
 	private Launcher launcher;
-	private FaxCharExtractor faxCharExtractor;
+	private FaxDigitExtractor faxDigitExtractor;
 	private FaxLineFactory faxLineFactory;
-	private FaxCharTranslator faxCharTranslator;
+	private FaxDigitDecorator faxDigitDecorator;
 	private AccountNumberFactory accountNumberFactory;
 	private AccountPrinter accountPrinter;
 
 	@Before
 	public void setup() {
-		this.faxCharExtractor = Mockito.mock(FaxCharExtractor.class);
+		this.faxDigitExtractor = Mockito.mock(FaxDigitExtractor.class);
 		this.faxLineFactory = Mockito.mock(FaxLineFactory.class);
-		this.faxCharTranslator = Mockito.mock(FaxCharTranslator.class);
+		this.faxDigitDecorator = Mockito.mock(FaxDigitDecorator.class);
 		this.accountNumberFactory = Mockito.mock(AccountNumberFactory.class);
 		this.accountPrinter = Mockito.mock(AccountPrinter.class);
-		this.launcher = new Launcher(faxCharExtractor, faxLineFactory, faxCharTranslator, accountNumberFactory, accountPrinter);
+		this.launcher = new Launcher(faxDigitExtractor, faxLineFactory, faxDigitDecorator, accountNumberFactory, accountPrinter);
 
 	}
 
@@ -62,8 +62,8 @@ public class LauncherTest {
 		
 		launcher.run(lineIterator);
 		
-		Mockito.verify(faxCharExtractor).parse(Mockito.isA(FaxLine.class));
-		Mockito.verify(faxCharTranslator).translate(Mockito.anyList()) ;
+		Mockito.verify(faxDigitExtractor).parse(Mockito.isA(FaxLine.class));
+		Mockito.verify(faxDigitDecorator).translate(Mockito.anyList()) ;
 		Mockito.verify(accountNumberFactory).createAccountNumber(Mockito.anyList());
 		
 

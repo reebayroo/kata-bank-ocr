@@ -2,7 +2,7 @@ package com.reebayroo.account;
 
 import java.io.PrintStream;
 
-import com.reebayroo.parsing.TranslatedFaxChar;
+import com.reebayroo.parsing.DecoratedFaxDigit;
 
 public class AccountPrinter {
 	private final PrintStream out;
@@ -21,8 +21,8 @@ public class AccountPrinter {
 
 	private String generateDescriptionString(AccountNumber accountNumber) {
 		StringBuilder builder = new StringBuilder();
-		for (TranslatedFaxChar translatedFaxChar : accountNumber.getParsedFaxChars()) {
-	        builder.append(getValueOrQM(translatedFaxChar.getValue()));
+		for (DecoratedFaxDigit decoratedFaxDigit : accountNumber.getDecoratedFaxDigits()) {
+	        builder.append(getValueOrQM(decoratedFaxDigit.getValue()));
         }
 		builder.append(" ").append(accountNumber.getStatus());
 	    return builder.toString();

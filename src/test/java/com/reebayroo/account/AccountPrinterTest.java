@@ -24,7 +24,7 @@ public class AccountPrinterTest {
 	@Test
 	public void testPrintValid() {
 		int[] numbers = { 3, 4, 5, 8, 8, 2, 8, 6, 5 };
-		AccountNumber accountNumber = new AccountNumber(CheckerTestHelper.create(numbers), AccountNumberStatus.OK);
+		AccountNumber accountNumber = new AccountNumber(TestHelper.create(numbers), AccountNumberStatus.OK);
 		accountPrinter.print(accountNumber);
 		ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
 		Mockito.verify(out).print(argument.capture());
@@ -33,7 +33,7 @@ public class AccountPrinterTest {
 	@Test
 	public void testPrintInvalid() {
 		int[] numbers = { 3, 4, -1, 8, 8, 2, 8, 6, 5 };
-		AccountNumber accountNumber = new AccountNumber(CheckerTestHelper.create(numbers), AccountNumberStatus.ILL);
+		AccountNumber accountNumber = new AccountNumber(TestHelper.create(numbers), AccountNumberStatus.ILL);
 		accountPrinter.print(accountNumber);
 		ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
 		Mockito.verify(out).print(argument.capture());

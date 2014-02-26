@@ -11,11 +11,11 @@ import org.junit.Test;
 
 public class FaxCharExtractorTest {
 
-	private FaxCharExtractor extractor;
+	private FaxDigitExtractor extractor;
 
 	@Before
 	public void setup() {
-		this.extractor = new FaxCharExtractor();
+		this.extractor = new FaxDigitExtractor();
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -41,15 +41,15 @@ public class FaxCharExtractorTest {
 	}
 
 	private void parseAndAssert(String lineOne, String lineTwo, String lineThree, int... expectedCodes) {
-		List<FaxChar> actual = extractor.parse(new FaxLine(lineOne, lineTwo, lineThree));
-		List<FaxChar> expected = create(expectedCodes);
+		List<FaxDigit> actual = extractor.parse(new FaxLine(lineOne, lineTwo, lineThree));
+		List<FaxDigit> expected = create(expectedCodes);
 		assertThat(actual, equalTo(expected));
 	}
 
-	private List<FaxChar> create(int... expectedCodes) {
-		List<FaxChar> result = new ArrayList<FaxChar>();
+	private List<FaxDigit> create(int... expectedCodes) {
+		List<FaxDigit> result = new ArrayList<FaxDigit>();
 		for (int value : expectedCodes) {
-			result.add(FaxCharBook.getInstance().getByValue(value));
+			result.add(FaxDigitDictionary.getInstance().getByValue(value));
 		}
 		return result;
 	}

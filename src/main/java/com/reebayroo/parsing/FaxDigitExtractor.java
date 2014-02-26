@@ -5,24 +5,24 @@ import java.util.List;
 
 import org.apache.commons.lang3.Validate;
 
-public class FaxCharExtractor {
+public class FaxDigitExtractor {
 
 	private static final int LINE_LENGHT = 27;
 	private static final int MAX_CHARS_PER_LINE = 9;
 	private static final int CHARS_IN_A_NUMBER = 3;
 
-	public List<FaxChar> parse(FaxLine faxCharLine) {
+	public List<FaxDigit> parse(FaxLine faxCharLine) {
 		validateLength(faxCharLine.getFirstLine());
 		validateLength(faxCharLine.getSecondLine());
 		validateLength(faxCharLine.getThirdLine());
 
-		List<FaxChar> parsedChars = new ArrayList<FaxChar>();
+		List<FaxDigit> parsedChars = new ArrayList<FaxDigit>();
 		for (int i = 0; i < MAX_CHARS_PER_LINE; i++) {
-			FaxChar faxChar = new FaxChar(extractChars(faxCharLine.getFirstLine(), i), //
+			FaxDigit faxDigit = new FaxDigit(extractChars(faxCharLine.getFirstLine(), i), //
 			        extractChars(faxCharLine.getSecondLine(), i), //
 			        extractChars(faxCharLine.getThirdLine(), i) //
 			);
-			parsedChars.add(faxChar);
+			parsedChars.add(faxDigit);
 		}
 		return parsedChars;
 

@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 
-import com.reebayroo.parsing.TranslatedFaxChar;
+import com.reebayroo.parsing.DecoratedFaxDigit;
 
 public class AccountCheckSumChecker {
 
-	public boolean eval(List<TranslatedFaxChar> parsedFaxChars) {
+	public boolean eval(List<DecoratedFaxDigit> parsedFaxChars) {
 		if (CollectionUtils.isEmpty(parsedFaxChars) || //
 		        CollectionUtils.size(parsedFaxChars) != 9) {
 			return false;
