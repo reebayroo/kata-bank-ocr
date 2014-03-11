@@ -1,10 +1,7 @@
 package com.reebayroo;
 
-import static org.junit.Assert.*;
-
 import java.io.Reader;
 import java.io.StringReader;
-import java.util.List;
 
 import org.apache.commons.io.LineIterator;
 import org.junit.Before;
@@ -13,15 +10,12 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import com.reebayroo.account.AccountNumber;
 import com.reebayroo.account.AccountNumberFactory;
 import com.reebayroo.account.AccountPrinter;
-import com.reebayroo.parsing.FaxDigit;
+import com.reebayroo.parsing.FaxDigitDecorator;
 import com.reebayroo.parsing.FaxDigitExtractor;
 import com.reebayroo.parsing.FaxLine;
 import com.reebayroo.parsing.FaxLineFactory;
-import com.reebayroo.parsing.FaxDigitDecorator;
-import com.reebayroo.parsing.DecoratedFaxDigit;
 
 public class LauncherTest {
 	private Launcher launcher;
